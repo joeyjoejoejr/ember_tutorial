@@ -4,6 +4,7 @@ App.Router.map(function() {
   this.resource('widgets', { path: '/widgets' }, function(){
     this.resource('widget', { path: ':widget_id' });
     this.route('new', { path: 'new' });
+    this.route('edit', { path: ':widget_id/edit' });
   });
 });
 
@@ -24,6 +25,15 @@ App.WidgetsNewRoute = Ember.Route.extend({
                      }
            }
 
+});
+
+App.WidgetsEditRoute = Ember.Route.extend({
+  actions: {
+             update: function(model) {
+                     model.save();
+                     this.transitionTo('widget', model);
+                   }
+           }
 });
 
 App.Widget = DS.Model.extend({

@@ -30,6 +30,7 @@
   <script type="text/x-handlebars" data-template-name="widget">
     <h3>Widget: {{name}}</h3>
     <p>{{description}}</p>
+    {{#link-to 'widgets.edit' this}}Edit{{/link-to}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="widgets/new">
@@ -38,6 +39,15 @@
       <p>{{input value=name}}</p>
       <p>{{textarea value=description}}</p>
       <input type="submit" value="Create">
+    </form>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="widgets/edit">
+    <h3>Edit Widget</h3>
+    <form {{action update this on="submit"}}>
+      <p>{{input value=name}}</p>
+      <p>{{textarea value=description}}</p>
+      <input type="submit" value="Update">
     </form>
   </script>
 
