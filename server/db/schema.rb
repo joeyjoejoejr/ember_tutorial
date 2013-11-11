@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20131111081518) do
 
   create_table "widgets", force: true do |t|
-    t.string   "description"
+    t.text     "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
