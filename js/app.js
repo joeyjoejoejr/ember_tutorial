@@ -48,18 +48,7 @@ App.Widget = DS.Model.extend({
   description: DS.attr()
 });
 
-App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host: "http://jackson.local:3000",
-});
+App.Widget.FIXTURES = []
 
-source = new EventSource('http://jackson.local:3000/widgets/events')
-source.addEventListener('message', function(e) {
-  widget = $.parseJSON(e.data);
-  if(widget.deleted_at) {
-    App.Widget.store.find('widget', widget.id).then(function(widget){
-      widget.deleteRecord();
-    });
-  } else {
-    App.Widget.store.push('widget', widget);
-  }
-});
+App.ApplicationAdapter = DS.FixtureAdapter
+
