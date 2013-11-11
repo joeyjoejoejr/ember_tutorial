@@ -11,15 +11,19 @@
   <script type="text/x-handlebars">
     <h2>Welcome to Ember.js</h2>
 
+    {{#link-to 'widgets'}}Widgets{{/link-to}}
+
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" data-template-name="index">
+  <script type="text/x-handlebars" data-template-name="widgets">
     <ul>
-    {{#each item in model}}
-      <li>{{item}}</li>
-    {{/each}}
+      {{#each model}}
+        <li>{{#link-to 'widget' this}}{{name}}{{/link-to}}</li>
+      {{/each}}
     </ul>
+
+    {{outlet}}
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>

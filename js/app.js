@@ -1,11 +1,21 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  // put your routes here
+  this.resource('widgets', { path: '/widgets' }, function(){
+  });
 });
 
-App.IndexRoute = Ember.Route.extend({
+App.WidgetsRoute = Ember.Route.extend({
   model: function() {
-    return ['red', 'yellow', 'blue'];
-  }
+           return this.store.find('widget')
+         }
+});
+
+App.Widget = DS.Model.extend({
+  name: DS.attr(),
+  description: DS.attr()
+});
+
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  host: "http://jackson.local:3000"
 });
