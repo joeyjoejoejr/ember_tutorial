@@ -2,6 +2,7 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('widgets', { path: '/widgets' }, function(){
+    this.resource('widget', { path: ':widget_id' });
   });
 });
 
