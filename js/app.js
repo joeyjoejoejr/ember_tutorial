@@ -11,7 +11,14 @@ App.Router.map(function() {
 App.WidgetsRoute = Ember.Route.extend({
   model: function() {
            return this.store.find('widget')
-         }
+         },
+  actions: {
+             delete: function(model){
+                      model.deleteRecord();
+                      model.save();
+                      this.transitionTo('widgets')
+                     }
+           }
 });
 
 App.WidgetsNewRoute = Ember.Route.extend({
