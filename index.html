@@ -22,6 +22,7 @@
         <li>{{#link-to 'widget' this}}{{name}}{{/link-to}}</li>
       {{/each}}
     </ul>
+    {{#link-to 'widgets.new'}}Create A Widget{{/link-to}}
 
     {{outlet}}
   </script>
@@ -29,6 +30,15 @@
   <script type="text/x-handlebars" data-template-name="widget">
     <h3>Widget: {{name}}</h3>
     <p>{{description}}</p>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="widgets/new">
+    <h3>New Widget</h3>
+    <form {{action create this on="submit"}}>
+      <p>{{input value=name}}</p>
+      <p>{{textarea value=description}}</p>
+      <input type="submit" value="Create">
+    </form>
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
