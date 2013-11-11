@@ -1,3 +1,3 @@
 class WidgetSerializer < ActiveModel::Serializer
-  attributes :id, :description
+  attributes :id, :description, :name, :deleted_at
 end

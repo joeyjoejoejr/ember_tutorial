@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111040655) do
+ActiveRecord::Schema.define(version: 20131111081518) do
 
   create_table "widgets", force: true do |t|
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.datetime "deleted_at"
   end
 
 end

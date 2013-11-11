@@ -51,3 +51,15 @@ App.Widget = DS.Model.extend({
 App.ApplicationAdapter = DS.RESTAdapter.extend({
   host: "http://jackson.local:3000",
 });
+
+source = new EventSource('http://jackson.local:3000/widgets/events')
+source.addEventListener('message', function(e) {
+  widget = $.parseJSON(e.data);
+  if(widget.deleted_at) {
+    App.Widget.store.find('widget', widget.id).then(function(widget){
+      widget.deleteRecord();
+    });
+  } else {
+    App.Widget.store.push('widget', widget);
+  }
+});
